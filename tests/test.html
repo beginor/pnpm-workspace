@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/dist/libs/bootstrap/bootstrap.min.css">
+  <title>Test</title>
+</head>
+<body>
+  <div id="app" class="m-2">
+    <button id="btn-test" type="button" class="btn btn-sm btn-outline-secondary">
+      Test
+    </button>
+  </div>
+  <script src="/dist/loader.js"></script>
+  <script>
+    loadScripts([
+      { type: 'importmap',
+        src: [
+          `/importmap.${isProd()?'prod.json':'json'}`,
+          // `./importmap.${isProd()?'prod.json':'json'}`
+        ]
+      },
+      { type: 'module', src: './test.js' }
+    ]).catch(ex => console.error(ex));
+    </script>
+</body>
+</html>
